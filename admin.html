@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="admin.css">
+    <link rel="icon" href="img/icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -13,7 +14,7 @@
 </head>
 <body>
     <header class="header">
-        <a href="#" class="logo"><img src="/img/logo.png" alt="Логотип сайта"></a>
+        <a href="#" class="logo"><img src="img/icon.png" alt="Логотип сайта"></a>
         <div class="user">
             <p class="username">Петя Кокорин</p>
             <div class="avatar"></div>
@@ -44,8 +45,6 @@
                                 <li class="group-li">5</li>
                                 <li class="group-li">6</li>
                                 <li class="group-li">7</li>
-                                <li class="group-li">8</li>
-                                <li class="group-li">9</li>
                                 <li class="group-li">10</li>
                                 <li class="group-li">11</li>
                                 <li class="group-li">12</li>
@@ -54,8 +53,6 @@
                                 <li class="group-li">15</li>
                                 <li class="group-li">16</li>
                                 <li class="group-li">17</li>
-                                <li class="group-li">18</li>
-                                <li class="group-li">19</li>
                                 <li class="group-li">20</li>
                                 <li class="group-li">21</li>
                                 <li class="group-li">22</li>
@@ -84,6 +81,28 @@
                 </div>
             </div>
         </nav>
+
+        <table class="table">
+            <tbody>
+                <tr class="table-names">
+                    <td class="table-username">ФИО</td>
+                    <td class="table-group">Группа</td>
+                    <td class="table-role">Роль</td>
+                    <td class="func">
+                        <button class="new-user table-btn"></button>
+                    </td>
+                </tr>
+                <tr class="table-user">
+                    <td>Кокорин Петр Алексеевич</td>
+                    <td>14</td>
+                    <td>Ученик</td>
+                    <td class="func">
+                        <button class="change table-btn"></button>
+                        <button class="delete table-btn"></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </main>
     <script src="admin.js"></script>
 </body>
