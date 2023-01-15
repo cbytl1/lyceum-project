@@ -89,11 +89,11 @@
                     <td class="table-group">Группа</td>
                     <td class="table-role">Роль</td>
                     <td class="func">
-                        <button class="new-user table-btn"></button>
+                        <button class="new-user table-btn" onclick="n_user()"></button>
                     </td>
                 </tr>
                 <tr class="table-user">
-                    <td>Кокорин Петр Алексеевич</td>
+                    <td><span class="surname">Кокорин</span> <span class="name">Петр</span> <span class="patronymic">Алексеевич</span></td>
                     <td>14</td>
                     <td>Ученик</td>
                     <td class="func">
@@ -104,6 +104,29 @@
             </tbody>
         </table>
     </main>
+
+    <form class="new-user-block" method="POST">
+        <p class="new-user-p">Создание пользователя</p>
+        <div class="new-user-main">
+            <div class="inputs">
+                <input class="input input-name" type="text" placeholder="Имя">
+                <input class="input input-surname" type="text" placeholder="Фамилия">
+                <input class="input input-patronymic" type="text" placeholder="Отчество">
+                <input class="input input-group" type="text" placeholder="Логин">
+                <input class="input input-role" type="text" placeholder="Пароль">
+            </div>
+            <div class="lists">
+                <div class="new-user-role">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="new-user-btns">
+            <button class="new-user-btn exit">Отмена</button>
+            <button class="new-user-btn create">Создать</button>
+        </div>
+    </form>
+
     <script src="admin.js"></script>
 </body>
 </html>
