@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +13,7 @@
     <script src="jquery.js"></script>
     <title>Админка</title>
 </head>
+
 <body>
     <header class="header">
         <a href="#" class="logo"><img src="img/icon.png" alt="Логотип сайта"></a>
@@ -93,7 +95,11 @@
                     </td>
                 </tr>
                 <tr class="table-user">
-                    <td><span class="surname">Кокорин</span> <span class="name">Петр</span> <span class="patronymic">Алексеевич</span></td>
+                    <td>
+                        <span class="surname">Кокорин</span>
+                        <span class="name">Петр</span>
+                        <span class="patronymic">Алексеевич</span>
+                    </td>
                     <td>14</td>
                     <td>Ученик</td>
                     <td class="func">
@@ -105,28 +111,74 @@
         </table>
     </main>
 
-    <form class="new-user-block" method="POST">
+    <form class="new-user-block" method="POST" id="form">
         <p class="new-user-p">Создание пользователя</p>
         <div class="new-user-main">
             <div class="inputs">
-                <input class="input input-name" type="text" placeholder="Имя">
                 <input class="input input-surname" type="text" placeholder="Фамилия">
+                <input class="input input-name" type="text" placeholder="Имя">
                 <input class="input input-patronymic" type="text" placeholder="Отчество">
-                <input class="input input-group" type="text" placeholder="Логин">
-                <input class="input input-role" type="text" placeholder="Пароль">
+                <input class="input input-login" type="text" placeholder="Логин">
+                <input class="input input-password" type="text" placeholder="Пароль">
             </div>
             <div class="lists">
                 <div class="new-user-role">
-                    
+                    <div>
+                        <label class="role-name" for="role1">Ученик</label>
+                        <input class="input-role" type="radio" name="role" id="role1" value="Ученик" checked>
+                    </div>
+                    <div>
+                        <label class="role-name" for="role2">Учитель</label>
+                        <input class="input-role" type="radio" name="role" id="role2" value="Учитель">
+                    </div>
+                    <div>
+                        <label class="role-name" for="role3">Админ</label>
+                        <input class="input-role" type="radio" name="role" id="role3" value="Администратор">
+                    </div>
+                </div>
+
+                <div class="new-user-group">
+                    <p class="group-name">Группа:</p>
+                    <div class="list">
+                        <p class="group-p2 n-hidden" onclick="group('.group1', '.group-p2')">1</p>
+                        <ul class="group1 hidden-list">
+                            <li class="group-li">1</li>
+                            <li class="group-li">2</li>
+                            <li class="group-li">3</li>
+                            <li class="group-li">4</li>
+                            <li class="group-li">5</li>
+                            <li class="group-li">6</li>
+                            <li class="group-li">7</li>
+                            <li class="group-li">10</li>
+                            <li class="group-li">11</li>
+                            <li class="group-li">12</li>
+                            <li class="group-li">13</li>
+                            <li class="group-li">14</li>
+                            <li class="group-li">15</li>
+                            <li class="group-li">16</li>
+                            <li class="group-li">17</li>
+                            <li class="group-li">20</li>
+                            <li class="group-li">21</li>
+                            <li class="group-li">22</li>
+                            <li class="group-li">23</li>
+                            <li class="group-li">24</li>
+                            <li class="group-li">25</li>
+                            <li class="group-li">26</li>
+                            <li class="group-li">27</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="new-user-btns">
-            <button class="new-user-btn exit">Отмена</button>
-            <button class="new-user-btn create">Создать</button>
+            <button class="new-user-btn exit" onclick="exit()" type="button">Отмена</button>
+            <button class="new-user-btn create" onclick="create()" type="button">Создать</button>
         </div>
     </form>
 
+    <div class="back-form"></div>
+
     <script src="admin.js"></script>
 </body>
+
 </html>
