@@ -1,3 +1,5 @@
+//Открытие списка
+
 function group(cls, pp) {
     let a = true;
 
@@ -17,6 +19,8 @@ function group(cls, pp) {
     });
 }
 
+//Создание нового пользователя
+
 function n_user() {
     $('.new-user-block').css({ 'display': 'block' });
     $('.back-form').css({ 'display': 'block' });
@@ -29,6 +33,9 @@ function exit() {
     $('.group-p2').html('1');
     $('#role1').click();
     $('.input').removeClass('error');
+
+    $('.creare').html('Создать');
+    $('.create').attr('onclick', 'create()');
 }
 
 let role = 'Ученик';
@@ -130,3 +137,31 @@ function create() {
     }
 
 }
+
+//Редактирование пользователя
+
+$('.change').on('click', function() {
+    let tr = this.parentNode.parentNode;
+    let subname = tr.childNodes[1].childNodes[1].innerHTML;
+    let name = tr.childNodes[1].childNodes[3].innerHTML;
+    let pat = tr.childNodes[1].childNodes[5].innerHTML;
+    let group = tr.childNodes[3].innerHTML;
+    let role = tr.childNodes[5].innerHTML;
+
+    $('.creare').html('Редактировать');
+    $('.create').attr('onclick', 'chang()');
+
+    n_user();
+
+    $('.input-surname').val(subname);
+    $('.input-name').val(name);
+    $('.input-patronymic').val(pat);
+    $('.group-p2').html(group);
+
+    if (role == 'Учитель') {
+        $('#role2').click();
+    }else if (role == 'Администратор') {
+        $('#role3').click();
+    }
+
+});

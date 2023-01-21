@@ -1,5 +1,7 @@
 html {
     box-sizing: border-box;
+    width: 100%;
+    height: 100%;
   }
   
 *,
@@ -65,18 +67,6 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     margin-top: 50px;
-}
-
-.back {
-    position: absolute;
-    left: 75px;
-    padding-left: 38px;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 16px;
-    color: #30475E;
-    background: url('./img/Arrow.svg') no-repeat left center;
-    cursor: pointer;
 }
 
 .nav {
