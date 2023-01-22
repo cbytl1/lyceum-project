@@ -19,6 +19,30 @@ function group(cls, pp) {
     });
 }
 
+//Код для проверки заполненности полей. Используется в создании и редактировании пользователя
+
+function input_errors() {
+    let alrt = 1;
+    let errors = true;
+
+    inputs.forEach(function (input) {
+        if (input.value === '') {
+            input.classList.add('error');
+            if (alrt == 1) {
+                errors = true;
+                alert('Заполните все поля!');
+                alrt--;
+            }
+
+        } else {
+            input.classList.remove('error');
+            errors = false;
+        }
+    });
+
+    return errors;
+}
+
 //Создание нового пользователя
 
 function n_user() {
@@ -34,7 +58,7 @@ function exit() {
     $('#role1').click();
     $('.input').removeClass('error');
 
-    $('.creare').html('Создать');
+    $('.create').html('Создать');
     $('.create').attr('onclick', 'create()');
 }
 
@@ -67,24 +91,7 @@ function create() {
     // let password = $('.input-password').val().trim();
     let group = $('.group-p2').html();
 
-    let empty_inputs = Array.from(inputs).filter(input => input.value === '');
-    let alrt = 1;
-    let errors = true;
-
-    inputs.forEach(function (input) {
-        if (input.value === '') {
-            input.classList.add('error');
-            if (alrt == 1) {
-                errors = true;
-                alert('Заполните все поля!');
-                alrt--;
-            }
-
-        } else { 
-            input.classList.remove('error');
-            errors = false; 
-        }
-    });
+    let errors = input_errors();
 
     if (!errors) {
 
@@ -134,34 +141,85 @@ function create() {
         $(td_role).html(role);
 
         exit();
+        change_fn();
     }
 
 }
 
 //Редактирование пользователя
 
-$('.change').on('click', function() {
-    let tr = this.parentNode.parentNode;
-    let subname = tr.childNodes[1].childNodes[1].innerHTML;
-    let name = tr.childNodes[1].childNodes[3].innerHTML;
-    let pat = tr.childNodes[1].childNodes[5].innerHTML;
-    let group = tr.childNodes[3].innerHTML;
-    let role = tr.childNodes[5].innerHTML;
+let tr;
 
-    $('.creare').html('Редактировать');
-    $('.create').attr('onclick', 'chang()');
+function change_fn() {
+    $('.change').on('click', function () {
+        tr = this.parentNode.parentNode;
+        let surname, name, pat, group, role;
+        if (tr.childNodes.length == 4) {
+            surname = tr.childNodes[0].childNodes[0].innerHTML;
+            name = tr.childNodes[0].childNodes[1].innerHTML;
+            pat = tr.childNodes[0].childNodes[2].innerHTML;
+            group = tr.childNodes[1].innerHTML;
+            role = tr.childNodes[2].innerHTML;
+        } else {
+            surname = tr.childNodes[1].childNodes[1].innerHTML;
+            name = tr.childNodes[1].childNodes[3].innerHTML;
+            pat = tr.childNodes[1].childNodes[5].innerHTML;
+            group = tr.childNodes[3].innerHTML;
+            role = tr.childNodes[5].innerHTML;
+        }
 
-    n_user();
+        $('.create').html('Редактировать');
+        $('.create').attr('onclick', 'chang()');
 
-    $('.input-surname').val(subname);
-    $('.input-name').val(name);
-    $('.input-patronymic').val(pat);
-    $('.group-p2').html(group);
+        n_user();
 
-    if (role == 'Учитель') {
-        $('#role2').click();
-    }else if (role == 'Администратор') {
-        $('#role3').click();
+        $('.input-surname').val(surname);
+        $('.input-name').val(name);
+        $('.input-patronymic').val(pat);
+        $('.group-p2').html(group);
+
+        if (role == 'Учитель') {
+            $('#role2').click();
+        } else if (role == 'Администратор') {
+            $('#role3').click();
+        }
+
+    });
+}
+change_fn();
+
+function chang() {
+
+    let errors = input_errors();
+    if (!errors) {
+        let span_surname, span_name, span_pat, td_group, td_role;
+        if (tr.childNodes.length == 4) {
+            span_surname = tr.childNodes[0].childNodes[0];
+            span_name = tr.childNodes[0].childNodes[1];
+            span_pat = tr.childNodes[0].childNodes[2];
+            td_group = tr.childNodes[1];
+            td_role = tr.childNodes[2];
+        } else {
+            span_surname = tr.childNodes[1].childNodes[1];
+            span_name = tr.childNodes[1].childNodes[3];
+            span_pat = tr.childNodes[1].childNodes[5];
+            td_group = tr.childNodes[3];
+            td_role = tr.childNodes[5];
+        }
+
+        let name = $('.input-name').val().trim();
+        let surname = $('.input-surname').val().trim();
+        let pat = $('.input-patronymic').val().trim();
+        // let login = $('.input-login').val().trim();
+        // let password = $('.input-password').val().trim();
+        let group = $('.group-p2').html();
+
+        $(span_surname).html(surname + " ");
+        $(span_name).html(name + " ");
+        $(span_pat).html(pat);
+        $(td_group).html(group);
+        $(td_role).html(role);
+
+        exit();
     }
-
-});
+}
